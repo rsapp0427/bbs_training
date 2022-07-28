@@ -35,7 +35,9 @@
 
 			<?php foreach($postList as $postItem): ?>
 			<div class="msg">
+				<?php if($postItem['picture'] !== ''): ?>
 				<img src="<?php echo h($postItem['picture']) ?>" width="48" height="48" alt="" />
+				<?php endif; ?>
 				<p>
 					<?php echo h($postItem['message']); ?>
 					<span class="name">
@@ -46,7 +48,9 @@
 				<p class="day"><a href="view.php?id=<?php echo h($postItem['post_id']); ?>">
 						<?php echo h($postItem['created']); ?>
 					</a>
+					<?php if($id === $postItem['member_id']): ?>
 					[<a href="delete.php?id=<?php echo h($postItem['post_id']); ?>" style="color: #F33;">削除</a>]
+					<?php endif; ?>
 				</p>
 			</div>
 			<?php endforeach; ?>
